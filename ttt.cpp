@@ -1,3 +1,6 @@
+// Author : Abhimanyu Tak
+// Title : Tic Tac Toe Game 
+
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
@@ -41,19 +44,10 @@ void rMove(){
 }
 
 void altMove(int a){
-	if(arr[a] == 0){
+	//if(arr[a] == 0){
 		board[a/size][a%size] = 0;
 		arr[a] = 1;
-	}
-	else{
-		for(int i = 0; i < size*size; i++){
-			if(arr[i] == 0){
-				board[i/size][i%size] = 0;
-				arr[i] = 1;
-				break;
-			}
-		}
-	}
+	//}
 }
 
 void winner(){
@@ -401,7 +395,6 @@ int compVsPlayer(int x, int y){
 				}
 			}
 		}
-		return 0;
 	}
 
 	if(start >= 2){
@@ -523,113 +516,118 @@ int compVsPlayer(int x, int y){
 		}
 		
 		if(board[0][0] == 1){
-			if(board[1][0] == 1){
+			if(board[1][0] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
-			else if(board[1][1] == 1){
+			else if(board[1][1] == 1 && board[2][2] == -1){
 				altMove(8);
 			}
-			else if(board[0][1] == 1){
+			else if(board[0][1] == 1 && board[0][2] == -1){
 				altMove(2);
 			}
-			else if(board[2][0] == 1){
+			else if(board[2][0] == 1 && board[1][0] == -1){
 				altMove(3);
 			}
-			else if(board[2][2] == 1){
+			else if(board[2][2] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
-			else if(board[0][2] == 1){
+			else if(board[0][2] == 1 && board[0][1] == -1){
 				altMove(1);
 			}
 			else
 				rMove();
 		}
 		else if(board[0][1] == 1){
-			if(board[0][2] == 1){
+			if(board[0][2] == 1 && board[0][0] == -1){
 				altMove(0);
 			}
-			else if(board[1][1] == 1){
+			else if(board[1][1] == 1 && board[2][1] == -1){
 				altMove(7);
 			}
-			else if(board[2][1] == 1){
+			else if(board[2][1] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
 			else
 				rMove();
 		}
 		else if(board[0][2] == 1){
-			if(board[1][1] == 1){
+			if(board[1][1] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
-			else if(board[2][0] == 1){
+			else if(board[2][0] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
-			else if(board[1][2] == 1){
+			else if(board[1][2] == 1 && board[2][2] == -1){
 				altMove(8);
 			}
-			else if(board[2][2] == 1){
+			else if(board[2][2] == 1 && board[1][2] == -1){
 				altMove(5);
 			}
 			else
 				rMove();
 		}
 		else if(board[1][0] == 1){
-			if(board[2][0] == 1){
+			if(board[2][0] == 1 && board[0][0] == -1){
 				altMove(0);
 			}
-			else if(board[1][1] == 1){
+			else if(board[1][1] == 1 && board[1][2] == -1){
 				altMove(5);
 			}
-			else if(board[1][2] == 1){
+			else if(board[1][2] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
 			else 
 				rMove();
 		}
 		else if(board[1][2] == 1){
-			if(board[2][2] == 1){
+			if(board[2][2] == 1 && board[0][1] == -1){
 				altMove(2);
 			}
-			else if(board[1][1] == 1){
+			else if(board[1][1] == 1 && board[1][0] == -1){
 				altMove(3);
 			}
 			else
 				rMove();
 		}
 		else if(board[2][0] == 1){
-			if(board[1][1] == 1){
+			if(board[1][1] == 1 && board[0][1] == -1){
 				altMove(2);
 			}
-			else if(board[2][1] == 1){
+			else if(board[2][1] == 1 && board[2][2] == -1){
 				altMove(8);
 			}
-			else if(board[2][2] == 1){
+			else if(board[2][2] == 1 && board[2][1] == -1){
 				altMove(7);
 			}
 			else
 				rMove();
 		}
 		else if(board[2][1] == 1){
-			if(board[2][2] == 1){
+			if(board[2][2] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
-			else if(board[1][1] == 1){
+			else if(board[1][1] == 1 && board[0][1] == -1){
 				altMove(1);
 			}
-			else if(board[0][1] == 1){
+			else if(board[0][1] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
 			else
 				rMove();
 		}
 		else if(board[2][2] == 1){
-			if(board[1][1] == 1){
+			if(board[1][1] == 1 && board[0][0] == -1){
+				altMove(0);
+			}
+			else if(board[2][1] == 1 && board[2][0] == -1){
+				altMove(0);
+			}
+			else if(board[1][2] == 1 && board[0][2] == -1){
 				altMove(0);
 			}
 			else
 				rMove();
 		}
-		return 0;
 	}
 
 	winner();
@@ -646,9 +644,9 @@ int compVsPlayer(int x, int y){
 
 int main()
 {	
-	cout << "========== Tic Tac Toe =========" << endl;
+	cout << "============== Tic Tac Toe ==============" << endl;
 	
-	cout << "============Rules===============" << endl;
+	cout << "=================Rules===================" << endl;
 	cout << "1) For every move, you have to insert" << endl; 
 	cout << "   coordinates as spaced integers ie \"1 2\"" << endl;
 	cout << "2) Coordinates start from \"0 0\" and ends" << endl;
@@ -674,6 +672,10 @@ int main()
 		printBoard();
 		cout << "------------" << endl;
 		//printArray();
+	}
+
+	if(flag == -1){
+		cout << "Draw" << endl;
 	}
 	
 	return 0;
