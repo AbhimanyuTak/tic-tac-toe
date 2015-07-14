@@ -11,6 +11,7 @@ const int size = 3;
 int arr[9];
 int board[size][size];
 int flag = -1;
+int moved = 0;
 
 void printBoard(){
 	for(int i = 0; i < size; i++){
@@ -38,16 +39,16 @@ void rMove(){
 		if(arr[i] == 0){
 			board[i/size][i%size] = 0;
 			arr[i] = 1;
+			moved = 1;
 			break;
 		}
 	}
 }
 
 void altMove(int a){
-	//if(arr[a] == 0){
-		board[a/size][a%size] = 0;
-		arr[a] = 1;
-	//}
+	board[a/size][a%size] = 0;
+	arr[a] = 1;
+	moved = 1;
 }
 
 void winner(){
@@ -106,14 +107,11 @@ void winner(){
 		cout << "You Lose" << endl;
 }
 
-void compVsComp(){
-	//srand (time(NULL));	
-}
-
 int compVsPlayer(int x, int y){
 	int random;
 	srand (time(NULL));	
 	static int start = 0;
+	moved = 0;
 	start++;
 	if(x > 2 || y > 2 || board[x][y] != -1){
 		cout << "Invalid Move" << endl;
@@ -395,6 +393,7 @@ int compVsPlayer(int x, int y){
 				}
 			}
 		}
+		moved = 1;
 	}
 
 	if(start >= 2){
@@ -515,7 +514,7 @@ int compVsPlayer(int x, int y){
 			}
 		}
 		
-		if(board[0][0] == 1){
+		if(board[0][0] == 1 && !moved){
 			if(board[1][0] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
@@ -534,10 +533,9 @@ int compVsPlayer(int x, int y){
 			else if(board[0][2] == 1 && board[0][1] == -1){
 				altMove(1);
 			}
-			else
-				rMove();
 		}
-		else if(board[0][1] == 1){
+		
+		if(board[0][1] == 1 && !moved){
 			if(board[0][2] == 1 && board[0][0] == -1){
 				altMove(0);
 			}
@@ -547,10 +545,8 @@ int compVsPlayer(int x, int y){
 			else if(board[2][1] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
-			else
-				rMove();
 		}
-		else if(board[0][2] == 1){
+		if(board[0][2] == 1 && !moved){
 			if(board[1][1] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
@@ -563,10 +559,8 @@ int compVsPlayer(int x, int y){
 			else if(board[2][2] == 1 && board[1][2] == -1){
 				altMove(5);
 			}
-			else
-				rMove();
 		}
-		else if(board[1][0] == 1){
+		if(board[1][0] == 1 && !moved){
 			if(board[2][0] == 1 && board[0][0] == -1){
 				altMove(0);
 			}
@@ -576,21 +570,17 @@ int compVsPlayer(int x, int y){
 			else if(board[1][2] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
-			else 
-				rMove();
 		}
-		else if(board[1][2] == 1){
+		if(board[1][2] == 1 && !moved){
 			if(board[2][2] == 1 && board[0][1] == -1){
 				altMove(2);
 			}
 			else if(board[1][1] == 1 && board[1][0] == -1){
 				altMove(3);
 			}
-			else
-				rMove();
 		}
-		else if(board[2][0] == 1){
-			if(board[1][1] == 1 && board[0][1] == -1){
+		if(board[2][0] == 1 && !moved){
+			if(board[1][1] == 1 && board[0][2] == -1){
 				altMove(2);
 			}
 			else if(board[2][1] == 1 && board[2][2] == -1){
@@ -599,10 +589,8 @@ int compVsPlayer(int x, int y){
 			else if(board[2][2] == 1 && board[2][1] == -1){
 				altMove(7);
 			}
-			else
-				rMove();
 		}
-		else if(board[2][1] == 1){
+		if(board[2][1] == 1 && !moved){
 			if(board[2][2] == 1 && board[2][0] == -1){
 				altMove(6);
 			}
@@ -612,10 +600,8 @@ int compVsPlayer(int x, int y){
 			else if(board[0][1] == 1 && board[1][1] == -1){
 				altMove(4);
 			}
-			else
-				rMove();
 		}
-		else if(board[2][2] == 1){
+		if(board[2][2] == 1 && !moved){
 			if(board[1][1] == 1 && board[0][0] == -1){
 				altMove(0);
 			}
@@ -625,9 +611,9 @@ int compVsPlayer(int x, int y){
 			else if(board[1][2] == 1 && board[0][2] == -1){
 				altMove(0);
 			}
-			else
-				rMove();
 		}
+		if(!moved)
+			rMove();
 	}
 
 	winner();
