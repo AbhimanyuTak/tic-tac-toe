@@ -338,7 +338,6 @@ int compVsPlayer(int x, int y){
 	}
 
 	if(start >= 2){
-		cout << moved << endl;
 		if(board[0][0] == 0){
 			if(board[1][0] == 0){
 				if(board[2][0] == -1)
@@ -562,6 +561,9 @@ int compVsPlayer(int x, int y){
 
 	winner();
 	if(flag==0){
+		cout << "------------" << endl;
+		printBoard();
+		cout << "------------" << endl;
 		return 1;
 	}
 
@@ -598,9 +600,8 @@ int main()
 		k = k + 2;
 	}
 
-	if(flag == -1){
+	if(flag == -1)
 		cout << "Draw" << endl;
-	}
 	
 	return 0;
 }
