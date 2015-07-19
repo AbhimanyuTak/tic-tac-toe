@@ -8,7 +8,6 @@
 using namespace std;
 
 const int size = 3;
-int arr[9];
 int board[size][size];
 int flag = -1;
 int moved = 0;
@@ -27,18 +26,10 @@ void printBoard(){
 	}	
 }
 
-void printArray(){
-	for(int i = 0; i < size*size; i++){
-		cout << arr[i]	<< " ";	
-	}
-	cout << endl;	
-}
-
 void rMove(){
 	for(int i = 0; i < size*size; i++){
-		if(arr[i] == 0){
+		if(board[i/size][i%size] == -1){
 			board[i/size][i%size] = 0;
-			arr[i] = 1;
 			moved = 1;
 			break;
 		}
@@ -47,7 +38,6 @@ void rMove(){
 
 void altMove(int a){
 	board[a/size][a%size] = 0;
-	arr[a] = 1;
 	moved = 1;
 }
 
@@ -119,7 +109,6 @@ int compVsPlayer(int x, int y){
 	}
 	else{
 		board[x][y] = 1;
-		arr[x*size+y]= 1;
 	}
 
 	winner();
@@ -140,35 +129,27 @@ int compVsPlayer(int x, int y){
 			switch(random){
 				case 1:
 					board[0][0] = 0;
-					arr[0] = 1;
 					break;
 				case 2:
 					board[0][1] = 0;
-					arr[1] = 1;
 					break;
 				case 3:
 					board[0][2] = 0;
-					arr[2] = 1;
 					break;
 				case 4:
 					board[1][0] = 0;
-					arr[3] = 1;
 					break;
 				case 5:
 					board[1][2] = 0;
-					arr[5] = 1;
 					break;
 				case 6:
 					board[2][0] = 0;
-					arr[6] = 1;
 					break;
 				case 7:
 					board[2][1] = 0;
-					arr[7] = 1;
 					break;
 				case 8:
 					board[2][2] = 0;
-					arr[8] = 1;
 					break;
 			}
 			
@@ -183,27 +164,21 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][1] = 0;
-						arr[1] = 1;
 						break;
 					case 2:
 						board[0][2] = 0;
-						arr[2] = 1;
 						break;
 					case 3:
 						board[1][0] = 0;
-						arr[3] = 1;
 						break;
 					case 4:
 						board[2][0] = 0;
-						arr[6] = 1;
 						break;
 					case 5:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 6:
 						board[2][2] = 0;
-						arr[8] = 1;
 						break;
 				}
 			}
@@ -211,27 +186,21 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][0] = 0;
-						arr[0] = 1;
 						break;
 					case 2:
 						board[1][0] = 0;
-						arr[1] = 1;
 						break;
 					case 3:
 						board[2][1] = 0;
-						arr[7] = 1;
 						break;
 					case 4:
 						board[2][2] = 0;
-						arr[8] = 1;
 						break;
 					case 5:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 6:
 						board[0][2] = 0;
-						arr[2] = 1;
 						break;
 				}
 			}
@@ -246,27 +215,21 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][0] = 0;
-						arr[0] = 1;
 						break;
 					case 2:
 						board[0][1] = 0;
-						arr[1] = 1;
 						break;
 					case 3:
 						board[1][2] = 0;
-						arr[5] = 1;
 						break;
 					case 4:
 						board[2][2] = 0;
-						arr[8] = 1;
 						break;
 					case 5:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 6:
 						board[2][0] = 0;
-						arr[6] = 1;
 						break;
 				}
 			}
@@ -274,27 +237,21 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[2][0] = 0;
-						arr[6] = 1;
 						break;
 					case 2:
 						board[2][1] = 0;
-						arr[8] = 1;
 						break;
 					case 3:
 						board[0][2] = 0;
-						arr[2] = 1;
 						break;
 					case 4:
 						board[1][2] = 0;
-						arr[5] = 1;
 						break;
 					case 5:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 6:
 						board[0][0] = 0;
-						arr[0] = 1;
 						break;
 				}
 			}
@@ -309,19 +266,15 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][0] = 0;
-						arr[0] = 1;
 						break;
 					case 2:
 						board[0][2] = 0;
-						arr[2] = 1;
 						break;
 					case 3:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 4:
 						board[2][1] = 0;
-						arr[7] = 1;
 						break;
 				}
 			}
@@ -329,19 +282,15 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[2][0] = 0;
-						arr[6] = 1;
 						break;
 					case 2:
 						board[2][2] = 0;
-						arr[8] = 1;
 						break;
 					case 3:
 						board[0][1] = 0;
-						arr[1] = 1;
 						break;
 					case 4:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 				}
 			}
@@ -356,19 +305,15 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][0] = 0;
-						arr[0] = 1;
 						break;
 					case 2:
 						board[2][0] = 0;
-						arr[6] = 1;
 						break;
 					case 3:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 					case 4:
 						board[1][2] = 0;
-						arr[5] = 1;
 						break;
 				}
 			}
@@ -376,19 +321,15 @@ int compVsPlayer(int x, int y){
 				switch(random){
 					case 1:
 						board[0][2] = 0;
-						arr[2] = 1;
 						break;
 					case 2:
 						board[2][2] = 0;
-						arr[8] = 1;
 						break;
 					case 3:
 						board[1][0] = 0;
-						arr[3] = 1;
 						break;
 					case 4:
 						board[1][1] = 0;
-						arr[4] = 1;
 						break;
 				}
 			}
@@ -397,120 +338,122 @@ int compVsPlayer(int x, int y){
 	}
 
 	if(start >= 2){
+		cout << moved << endl;
 		if(board[0][0] == 0){
 			if(board[1][0] == 0){
 				if(board[2][0] == -1)
-					board[2][0] = 0;
+					altMove(6);
 			}
 			else if(board[1][1] == 0){
 				if(board[2][2] == -1)
-					board[2][2] = 0;
+					altMove(8);
 			}
 			else if(board[0][1] == 0){
-				if(board[0][2] == -1)
-					board[0][2] = 0;
+				if(board[0][2] == -1){
+					altMove(2);
+				}
 			}
 			else if(board[2][0] == 0){
 				if(board[1][0] == -1)
-					board[1][0] = 0;
+					altMove(3);
 			}
 			else if(board[2][2] == 0){
 				if(board[1][1] == -1)
-					board[1][1] = 0;
+					altMove(4);
 			}
 			else if(board[0][2] == 0){
 				if(board[0][1] == -1)
-					board[0][1] = 0;
+					altMove(1);
 			}
 		}
 		else if(board[0][1] == 0){
 			if(board[0][2] == 0){
 				if(board[0][0] == -1)
-					board[0][0] = 0;
+					altMove(0);
 			}
 			else if(board[1][1] == 0){
 				if(board[2][1] == -1)
-					board[2][1] = 0;
+					altMove(7);
 			}
 			else if(board[2][1] == 0){
 				if(board[1][1] == -1)
-					board[1][1] = 0;
+					altMove(4);
 			}
 		}
 		else if(board[0][2] == 0){
 			if(board[1][1] == 0){
 				if(board[2][0] == -1)
-					board[2][0] = 0;
+					altMove(6);
 			}
 			else if(board[2][0] == 0){
 				if(board[1][1] == -1)
-					board[1][1] = 0;
+					altMove(4);
 			}
 			else if(board[1][2] == 0){
 				if(board[2][2] == -1)
-					board[2][2] = 0;
+					altMove(8);
 			}
 			else if(board[2][2] == 0){
 				if(board[1][2] == -1)
-					board[1][2] = 0;
+					altMove(5);
 			}
 		}
 		else if(board[1][0] == 0){
 			if(board[2][0] == 0){
 				if(board[0][0] == -1)
-					board[0][0] = 0;
+					altMove(0);
 			}
 			else if(board[1][1] == 0){
 				if(board[1][2] == -1)
-					board[1][2] = 0;
+					altMove(5);
 			}
 			else if(board[1][2] == 0){
 				if(board[1][1] == -1)
-					board[1][1] = 0;
+					altMove(4);
 			}
 		}
 		else if(board[1][2] == 0){
 			if(board[2][2] == 0){
 				if(board[0][2] == -1)
-					board[0][2] = 0;
+					altMove(2);
 			}
 			else if(board[1][1] == 0){
 				if(board[1][0] == -1)
-					board[1][0] = 0;
+					altMove(3);
 			}
 		}
 		else if(board[2][0] == 0){
 			if(board[1][1] == 0){
 				if(board[0][2] == -1)
-					board[0][2] = 0;
+					altMove(2);
 			}
 			else if(board[2][1] == 0){
 				if(board[2][2] == -1)
-					board[2][2] = 0;
+					altMove(8);
 			}
 			else if(board[2][2] == 0){
 				if(board[2][1] == -1)
-					board[2][1] = 0;
+					altMove(7);
 			}
 		}
 		else if(board[2][1] == 0){
 			if(board[2][2] == 0){
 				if(board[2][0] == -1)
-					board[2][0] = 0;
+					altMove(6);
 			}
 			else if(board[1][1] == 0){
 				if(board[0][1] == -1)
-					board[0][1] = 0;
+					altMove(1);
 			}
 			else if(board[0][1] == 0){
 				if(board[1][1] == -1)
-					board[1][1] = 0;
+					altMove(4);
 			}
 		}
 		else if(board[2][2] == 0){
 			if(board[1][1] == 0){
-				if(board[1][1] == -1)
-					board[1][1] = 0;
+				if(board[0][0] == -1)
+					altMove(0);
 			}
 		}
 		
@@ -572,7 +515,7 @@ int compVsPlayer(int x, int y){
 			}
 		}
 		if(board[1][2] == 1 && !moved){
-			if(board[2][2] == 1 && board[0][1] == -1){
+			if(board[2][2] == 1 && board[0][2] == -1){
 				altMove(2);
 			}
 			else if(board[1][1] == 1 && board[1][0] == -1){
@@ -612,19 +555,16 @@ int compVsPlayer(int x, int y){
 				altMove(0);
 			}
 		}
-		if(!moved)
+		if(!moved){
 			rMove();
+		}
 	}
 
 	winner();
 	if(flag==0){
-		cout << "------------" << endl;
-		printBoard();
-		cout << "------------" << endl;
 		return 1;
 	}
 
-	cout << "Start :" << start << endl;
 	return 0;
 }
 
@@ -641,23 +581,21 @@ int main()
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			board[i][j] = -1;
-			arr[i*size+j] = 0;
 		}
 	}
 	
 	int k = 1;
 	int x = -1, y = -1;
 	while(k <= size*size){
+		cout << "------------" << endl;
+		printBoard();
+		cout << "------------" << endl;
 		cout << "Your turn" << endl;
 		cin >> x >> y;
 		if(compVsPlayer(x,y)){
 			break;
 		}
 		k = k + 2;
-		cout << "------------" << endl;
-		printBoard();
-		cout << "------------" << endl;
-		//printArray();
 	}
 
 	if(flag == -1){
